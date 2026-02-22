@@ -1,0 +1,20 @@
+# 1. Security: API Keys and Credentials
+.env
+keys.json
+
+# 2. Python Environment & Dependencies
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# 3. OS and Editor Specific Files
+.vscode/
+.idea/
+.DS_Store
+*.swp

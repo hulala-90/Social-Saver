@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Saver | My AI Knowledge Base</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card-tag { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; }
+        .hero-section { background: #6366f1; color: white; padding: 30px 0; border-radius: 0 0 20px 20px; margin-bottom: 30px; }
+        .card:hover { transform: translateY(-5px); transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+        .delete-btn { opacity: 0.5; transition: 0.3s; border: none; background: none; }
+        .delete-btn:hover { opacity: 1; color: #dc3545 !important; }
+        /* Sidebar Styling */
+        .sidebar { background: white; border-radius: 15px; padding: 20px; height: fit-content; position: sticky; top: 20px; }
+        .nav-link { color: #6c757d; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; }
+        .nav-link:hover { background-color: #f0f1ff; color: #6366f1; }
+        .nav-link.active { background-color: #6366f1; color: white !important; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section text-center shadow">
+        <h1>🧠 Social Saver</h1>
+        <p>Your AI-Organized Research Library</p>
+    </div>
+
+    <div class="container-fluid px-4">
+        <div class="row">
+            
+            <div class="col-md-3 col-lg-2 mb-4">
+                <div class="sidebar shadow-sm">
+                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Categories</h6>
+                    <nav class="nav flex-column">
+                        <a class="nav-link {% if not active_tag %}active{% endif %}" href="/dashboard">
+                            📂 All Saves
+                        </a>
+                        
+                        {% for tag in tags %}
+                        <a class="nav-link {% if active_tag == tag %}active{% endif %}" href="/dashboard?tag_filter={{ tag }}">
+                            # {{ tag }}
+                        </a>
+                        {% endfor %}
+                    </nav>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-lg-10">
+                
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <form action="/dashboard" method="get" class="d-flex shadow-sm rounded-3 overflow-hidden">
+                            <input type="text" name="search" class="form-control border-0 py-2" placeholder="Search keywords in summaries...">
+                            <button type="submit" class="btn btn-dark px-4">Search</button>
+                        </form>
+                    </div>
+                    <div class="col-md-4 mt-2 mt-md-0">
+                        <a href="/dashboard?random_pick=true" class="btn btn-outline-primary w-100 shadow-sm py-2">
+                            🎲 Surprise Me!
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% if items %}
+                        {% for item in items %}
+                        <div class="col-xl-4 col-lg-6 col-md-12 mb-4">
+                            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <span class="badge bg-primary-subtle text-primary card-tag">{{ item.tag }}</span>
+                                        <small class="text-muted" style="font-size: 0.7rem;">{{ item.timestamp.strftime('%d %b') if item.timestamp }}</small>
+                                    </div>
+                                    <p class="card-text text-dark fw-medium" style="font-size: 0.95rem;">{{ item.summary }}</p>
+                                </div>
+                                <div class="card-footer bg-white border-0 pb-3 d-flex justify-content-between align-items-center">
+                                    
+                                    {% if "google.com/search" in item.url %}
+                                        <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-outline-primary fw-bold px-2 py-1" style="font-size: 0.75rem;">
+                                            🔍 Find Article
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-link text-decoration-none fw-bold p-0">View Source →</a>
+                                    {% endif %}
+                                    
+                                    <form action="/delete/{{ item._id }}" method="post" onsubmit="return confirm('Delete this research save?');">
+                                        <button type="submit" class="delete-btn text-muted" title="Delete">
+                                            🗑️
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-12 text-center py-5">
+                            <p class="text-muted fs-5">No items found.</p>
+                            <p class="text-muted small">Send an image or link to your WhatsApp bot to get started!</p>
+                            <a href="/dashboard" class="btn btn-sm btn-primary mt-2">Clear Filters</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div> </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
