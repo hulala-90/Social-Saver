@@ -1,109 +1,344 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Saver | My AI Knowledge Base</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { background-color: #f8f9fa; }
-        .card-tag { font-size: 0.75rem; text-transform: uppercase; font-weight: bold; }
-        .hero-section { background: #6366f1; color: white; padding: 30px 0; border-radius: 0 0 20px 20px; margin-bottom: 30px; }
-        .card:hover { transform: translateY(-5px); transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
-        .delete-btn { opacity: 0.5; transition: 0.3s; border: none; background: none; }
-        .delete-btn:hover { opacity: 1; color: #dc3545 !important; }
-        /* Sidebar Styling */
-        .sidebar { background: white; border-radius: 15px; padding: 20px; height: fit-content; position: sticky; top: 20px; }
-        .nav-link { color: #6c757d; border-radius: 8px; margin-bottom: 5px; transition: 0.2s; }
-        .nav-link:hover { background-color: #f0f1ff; color: #6366f1; }
-        .nav-link.active { background-color: #6366f1; color: white !important; font-weight: bold; }
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SOCIAL SAVER - Mine Your Knowledge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=VT323&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-container": "#004713",
+              "on-primary-fixed": "#002105",
+              "surface-variant": "#e3e2e2",
+              "primary-container": "#5dbb63",
+              "on-tertiary-container": "#004721",
+              "secondary-fixed": "#ffdcc1",
+              "surface-container": "#efeded",
+              "secondary": "#835425",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#683d0f",
+              "tertiary-fixed": "#83fba5",
+              "on-error-container": "#93000a",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#7a4b1e",
+              "surface-bright": "#faf9f9",
+              "secondary-fixed-dim": "#f9ba82",
+              "error": "#ba1a1a",
+              "background": "#faf9f9",
+              "on-surface-variant": "#3f4a3d",
+              "surface-tint": "#006e22",
+              "primary": "#006e22",
+              "inverse-on-surface": "#f2f0f0",
+              "tertiary-fixed-dim": "#66dd8b",
+              "on-surface": "#1b1c1c",
+              "surface-container-highest": "#e3e2e2",
+              "surface-container-low": "#f5f3f3",
+              "on-background": "#1b1c1c",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#becaba",
+              "inverse-surface": "#303031",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dbdad9",
+              "on-secondary-fixed": "#2e1500",
+              "tertiary": "#006d36",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#00210c",
+              "surface-container-high": "#e9e8e7",
+              "surface": "#faf9f9",
+              "outline": "#6f7a6c",
+              "on-tertiary-fixed-variant": "#005227",
+              "primary-fixed-dim": "#7cdb7f",
+              "primary-fixed": "#98f899",
+              "on-primary-fixed-variant": "#005317",
+              "inverse-primary": "#7cdb7f",
+              "tertiary-container": "#44bd6e",
+              "secondary-container": "#ffbf87"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Space Grotesk"],
+              "label": ["Space Grotesk"],
+              "pixel": ["VT323"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .pixel-shadow {
+        box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.2);
+      }
+      .pixel-border-inner {
+        box-shadow: inset 4px 4px 0px 0px rgba(0,0,0,0.1), inset -4px -4px 0px 0px rgba(255,255,255,0.2);
+      }
+      .enchanted-glow {
+        box-shadow: 0 0 15px #c084fc, inset 0 0 10px #c084fc;
+        border: 2px solid #e879f9;
+      }
+      .jagged-edge {
+        clip-path: polygon(0 0, 5% 2%, 10% 0, 15% 3%, 20% 0, 25% 2%, 30% 0, 35% 3%, 40% 0, 45% 2%, 50% 0, 55% 3%, 60% 0, 65% 2%, 70% 0, 75% 3%, 80% 0, 85% 2%, 90% 0, 95% 3%, 100% 0, 100% 100%, 0 100%);
+      }
     </style>
 </head>
-<body>
-
-    <div class="hero-section text-center shadow">
-        <h1>🧠 Social Saver</h1>
-        <p>Your AI-Organized Research Library</p>
-    </div>
-
-    <div class="container-fluid px-4">
-        <div class="row">
-            
-            <div class="col-md-3 col-lg-2 mb-4">
-                <div class="sidebar shadow-sm">
-                    <h6 class="text-uppercase text-muted fw-bold mb-3" style="font-size: 0.8rem;">Categories</h6>
-                    <nav class="nav flex-column">
-                        <a class="nav-link {% if not active_tag %}active{% endif %}" href="/dashboard">
-                            📂 All Saves
-                        </a>
-                        
-                        {% for tag in tags %}
-                        <a class="nav-link {% if active_tag == tag %}active{% endif %}" href="/dashboard?tag_filter={{ tag }}">
-                            # {{ tag }}
-                        </a>
-                        {% endfor %}
-                    </nav>
-                </div>
-            </div>
-
-            <div class="col-md-9 col-lg-10">
-                
-                <div class="row mb-4">
-                    <div class="col-md-8">
-                        <form action="/dashboard" method="get" class="d-flex shadow-sm rounded-3 overflow-hidden">
-                            <input type="text" name="search" class="form-control border-0 py-2" placeholder="Search keywords in summaries...">
-                            <button type="submit" class="btn btn-dark px-4">Search</button>
-                        </form>
+<body class="bg-background text-on-background font-body selection:bg-tertiary selection:text-white">
+<!-- TopAppBar -->
+<header class="bg-green-700 dark:bg-green-900 text-white font-['Space_Grotesk'] uppercase tracking-wider font-bold docked full-width top-0 border-b-4 border-[#835425] shadow-[0_4px_0_0_#4a3015] flex justify-between items-center w-full px-6 py-4 max-w-full sticky z-50">
+<div class="text-2xl font-black text-white drop-shadow-[4px_4px_0px_rgba(131,84,37,1)]">SOCIAL SAVER</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-white border-b-4 border-white pb-1" href="#">World</a>
+<a class="text-green-100/80 hover:text-white transition-colors" href="#">Mining</a>
+<a class="text-green-100/80 hover:text-white transition-colors" href="#">Inventory</a>
+<a class="text-green-100/80 hover:text-white transition-colors" href="#">Crafting</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl cursor-pointer hover:bg-green-600 p-1 active:translate-y-1 transition-transform">account_circle</span>
+</div>
+</header>
+<main>
+<!-- HERO SECTION (Overworld Theme) -->
+<section class="relative min-h-[870px] flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-gradient-to-b from-[#87CEEB] to-[#E0F6FF]">
+<!-- Pixel Clouds -->
+<div class="absolute top-20 left-10 w-32 h-12 bg-white opacity-80 shadow-[8px_8px_0_0_rgba(255,255,255,0.4)]"></div>
+<div class="absolute top-40 right-20 w-48 h-16 bg-white opacity-80 shadow-[12px_12px_0_0_rgba(255,255,255,0.4)]"></div>
+<div class="z-10 max-w-4xl">
+<h1 class="font-pixel text-6xl md:text-8xl text-on-background mb-6 leading-none drop-shadow-[6px_6px_0px_#835425]">
+                    MINE YOUR KNOWLEDGE<br/>WITH SOCIAL SAVER
+                </h1>
+<p class="text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    Turn your WhatsApp into an AI-powered research crafting station.
+                </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<a href="https://wa.me/+14155238886?text=Hi%20Social%20Saver%20I%20want%20to%20start"
+   class="bg-primary text-white px-8 py-4 text-xl font-bold uppercase border-b-8 border-r-8 border-on-primary-fixed-variant hover:translate-y-1 active:border-b-4 active:border-r-4 transition-all">
+   Start on WhatsApp
+</a>
+<a href="https://github.com/hulala-90/Social-Saver"
+   target="_blank"
+   class="bg-outline text-white px-8 py-4 text-xl font-bold uppercase border-b-8 border-r-8 border-on-surface-variant hover:translate-y-1 active:border-b-4 active:border-r-4 transition-all">
+   View on GitHub
+</a>
+</div>
+</div>
+<!-- Grass Block Ground Decoration -->
+<div class="absolute bottom-0 w-full h-24 bg-primary border-t-8 border-primary-container jagged-edge">
+<div class="w-full h-full bg-[repeating-linear-gradient(90deg,transparent,transparent_40px,rgba(0,0,0,0.05)_40px,rgba(0,0,0,0.05)_80px)]"></div>
+</div>
+</section>
+<!-- HOW IT WORKS (Crafting Process) -->
+<section class="py-24 px-6 bg-[#F5F3F3]">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-pixel text-5xl text-center mb-16 text-secondary underline decoration-primary decoration-8 underline-offset-8">THE CRAFTING PROCESS</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Step 1 -->
+<div class="bg-surface-container-high border-4 border-secondary p-8 flex flex-col items-center text-center relative group">
+<div class="absolute -top-6 bg-secondary text-white px-4 py-1 font-pixel text-xl">01</div>
+<div class="w-24 h-24 bg-surface-container-highest border-4 border-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-5xl text-secondary">chat</span>
+</div>
+<h3 class="font-headline text-2xl font-black mb-4 uppercase">Send link on WhatsApp</h3>
+<p class="font-medium text-on-surface-variant">Just forward any research link, article, or video to your Social Saver assistant.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-high border-4 border-secondary p-8 flex flex-col items-center text-center relative group">
+<div class="absolute -top-6 bg-secondary text-white px-4 py-1 font-pixel text-xl">02</div>
+<div class="w-24 h-24 bg-surface-container-highest border-4 border-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-5xl text-secondary">pickleball</span>
+</div>
+<h3 class="font-headline text-2xl font-black mb-4 uppercase">AI mines insights</h3>
+<p class="font-medium text-on-surface-variant">Our AI engines break down the content, extracting key data points and summaries.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-high border-4 border-secondary p-8 flex flex-col items-center text-center relative group">
+<div class="absolute -top-6 bg-secondary text-white px-4 py-1 font-pixel text-xl">03</div>
+<div class="w-24 h-24 bg-surface-container-highest border-4 border-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-5xl text-secondary">inventory_2</span>
+</div>
+<h3 class="font-headline text-2xl font-black mb-4 uppercase">Store knowledge</h3>
+<p class="font-medium text-on-surface-variant">All mined data is organized in your digital inventory for instant retrieval.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FEATURES (Inventory Grid) -->
+<section class="py-24 px-6 bg-surface-bright">
+<div class="max-w-6xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+<h2 class="font-pixel text-5xl text-on-background">INVENTORY SLOTS</h2>
+<p class="font-pixel text-2xl text-secondary">6/6 SLOTS FILLED</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-4 border-secondary bg-secondary">
+<!-- Feature Slot 1 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">auto_awesome</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">AI Summarization</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">Deep content analysis with Gemini 1.5 Pro integration.</p>
+</div>
+<!-- Feature Slot 2 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">database</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">Smart Extraction</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">Structured data mining from unstructured web sources.</p>
+</div>
+<!-- Feature Slot 3 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">sms</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">Twilio API</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">Rock-solid WhatsApp integration for mobile accessibility.</p>
+</div>
+<!-- Feature Slot 4 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">storage</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">MongoDB</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">NoSQL bedrock for flexible data architecture.</p>
+</div>
+<!-- Feature Slot 5 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">bolt</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">FastAPI</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">Asynchronous mining for lightning-fast responses.</p>
+</div>
+<!-- Feature Slot 6 -->
+<div class="bg-surface-container-lowest p-8 border-2 border-secondary hover:bg-primary-container transition-colors cursor-help group">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-3xl text-primary group-hover:text-white">cloud_done</span>
+<h4 class="font-headline font-black uppercase text-xl group-hover:text-white">Secure Cloud</h4>
+</div>
+<p class="text-sm font-bold text-on-surface-variant group-hover:text-white">End-to-end encryption for your research vault.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- TECH STACK (Enchantments) -->
+<section class="py-20 px-6 bg-secondary">
+<div class="max-w-6xl mx-auto text-center">
+<h2 class="font-pixel text-4xl text-secondary-fixed mb-12 uppercase tracking-widest">Enchanted Tech Stack</h2>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">bolt</span> FastAPI
                     </div>
-                    <div class="col-md-4 mt-2 mt-md-0">
-                        <a href="/dashboard?random_pick=true" class="btn btn-outline-primary w-100 shadow-sm py-2">
-                            🎲 Surprise Me!
-                        </a>
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">chat_bubble</span> Twilio
                     </div>
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">psychology</span> Gemini
+                    </div>
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">dataset</span> MongoDB
+                    </div>
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">terminal</span> Python
+                    </div>
+<div class="bg-inverse-surface enchanted-glow px-6 py-3 text-tertiary-fixed font-pixel text-2xl flex items-center gap-3">
+<span class="material-symbols-outlined">settings_input_component</span> Gunicorn
+                    </div>
+</div>
+</div>
+</section>
+<!-- USE CASES (Game Modes) -->
+<section class="py-24 px-6 bg-surface-container-low">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-pixel text-5xl mb-16 text-center text-on-background">SELECT YOUR GAME MODE</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Academic -->
+<div class="bg-surface-container-high border-b-8 border-secondary p-6 hover:bg-white transition-all transform hover:-translate-y-2">
+<img class="w-full h-40 object-cover mb-4 border-4 border-secondary" data-alt="Stack of pixelated-style old academic books" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTTq2OpMElvQBuPM0UHNxZWCoXkDD9RiyFYqizl7jaTP4nj55naD6yz0vT-Y4a2UZZhUAVfoyddBc1TU1VgGTxNJ0MKUhSmyGDNKA8vw-soGURANLspS4_L5bAZwcnJQcCFB8OUuw8cwCbto0K2ROb7YZuuuZ3ECdtyLjWxX8OmX4lCDYGnk5Dn5QmbfcTpM8i-HUmWnh9BhN7ecx8RtcCBoHo9W_EvTgytnxmQH5NpYmEj03SoHHME0j9ELwemtqmZZYj_qnDlzA"/>
+<h5 class="font-pixel text-2xl text-secondary mb-2">Academic</h5>
+<p class="text-sm font-bold uppercase text-on-surface">Mines scholarly articles for thesis support.</p>
+</div>
+<!-- Creator -->
+<div class="bg-surface-container-high border-b-8 border-secondary p-6 hover:bg-white transition-all transform hover:-translate-y-2">
+<img class="w-full h-40 object-cover mb-4 border-4 border-secondary" data-alt="Workspace with monitor and pixel graphics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOcPdKCZ10NnkbhrZMWYonUFyScHVpacfQGKcDXSjSLhqd_m--XwS_AADf4eu7QUoV_uGO7PQIb3dzQwlRpsYNKHlG_t-xcicjFFmgDyBHPWXnWsbcVenfPJLK0DA8-DG72arma5TvAMsHN9-RAGlK-rxR-RflVk08DOi7MBTZM4qgwo_o2GNrYfB9yq9svYwLM0BMRuVBO-kyFlKz1wVNJE5el1P4RU34J1bSzIQGkSylDNauNYPd6hhYTiW_XDo8B1-U6e5vNjQ"/>
+<h5 class="font-pixel text-2xl text-secondary mb-2">Creator</h5>
+<p class="text-sm font-bold uppercase text-on-surface">Extracts trends and scripts from video links.</p>
+</div>
+<!-- Productivity -->
+<div class="bg-surface-container-high border-b-8 border-secondary p-6 hover:bg-white transition-all transform hover:-translate-y-2">
+<img class="w-full h-40 object-cover mb-4 border-4 border-secondary" data-alt="Pixelated checklist and watch on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMCUJ41SOWz3gEMsL_5xq6GBv_hzeIC4gXdHyYfEu00patvN8dHokP94lND0zuoPRWejNSS262A-GwIicqtJBhkOS4TN813PR1i0jbcuhHNVxogALZnmrVaTB3h4C8c-Hsy8cKB7uCf51QRmXeoLRcW4lIxTRm9iC0ULZujmux07aIdRH90mNWE_CXDgDUYw50z0KcPUiH9oGDDxG91MwdjhaeSucsSOIFLc49wclt8vQceIZADXGosRRWn9BzKSS4jrw367TyI9Q"/>
+<h5 class="font-pixel text-2xl text-secondary mb-2">Productivity</h5>
+<p class="text-sm font-bold uppercase text-on-surface">Daily archives of important work chats.</p>
+</div>
+<!-- Explorer -->
+<div class="bg-surface-container-high border-b-8 border-secondary p-6 hover:bg-white transition-all transform hover:-translate-y-2">
+<img class="w-full h-40 object-cover mb-4 border-4 border-secondary" data-alt="Compass and map in a pixelated style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsfgWnuRCmq0ntnYy_63Ddphd7bz2VNQMIYXMiyZSWlWdsKU4EGq7Lt2OnvIVJeVlAi-NaTaho_W-icsa7DZ8s6tVDlNIKVTYaO-FHcPoVfEBvTi0DZKpZSpi5FaKU3Fb9pf4yoix9rnDygURRNB_HW0dCT_pCsTCNF96KBd4XCFkEQ8XQOM2oKWO_2KEovK9DHAc4hyTU3FzCHJ8Hh876EA1A6hddpeRDIHZo4h9NMftjRePI4imzsAOFQR31gl0TPNxREtZN7LE"/>
+<h5 class="font-pixel text-2xl text-secondary mb-2">Explorer</h5>
+<p class="text-sm font-bold uppercase text-on-surface">Archiving the web, one link at a time.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FINAL CTA (Nether Portal Style) -->
+<section class="py-32 px-6 bg-[#1b0a24] relative overflow-hidden flex items-center justify-center">
+<!-- Obsidian Texture Overlay -->
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(#4c1d95_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="relative z-10 p-1 bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-purple-900 shadow-[0_0_50px_rgba(168,85,247,0.5)]">
+<div class="bg-[#1b0a24] p-12 text-center border-4 border-purple-400">
+<h2 class="font-pixel text-5xl md:text-7xl text-purple-200 mb-8 animate-pulse">READY TO MINE?</h2>
+<button class="bg-primary text-white px-12 py-6 text-2xl font-black uppercase border-b-8 border-r-8 border-on-primary-fixed-variant hover:scale-105 transition-transform active:translate-y-2">
+                        Start Mining Now on WhatsApp
+                    </button>
+<p class="mt-6 font-pixel text-purple-300 text-xl tracking-widest">NO DOWNLOAD REQUIRED</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-500 dark:bg-zinc-800 text-zinc-100 font-['Space_Grotesk'] text-sm font-bold uppercase full-width border-t-8 border-zinc-600 w-full py-8 px-12 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-lg font-black text-zinc-100">SOCIAL SAVER</div>
+<div class="flex gap-8">
+<a href="https://github.com/hulala-90/Social-Saver" target="_blank">
+  GitHub
+</a>
+<a class="text-zinc-300 hover:text-white hover:bg-zinc-600 px-2 py-1 transition-colors" href="#">Wiki</a>
+<a class="text-zinc-300 hover:text-white hover:bg-zinc-600 px-2 py-1 transition-colors" href="#">Discord</a>
+</div>
+<p class="text-center md:text-right">Crafted with &lt;3 in the Overworld</p>
+</footer>
+<!-- SideNavBar (Simulated for Navigation reference) -->
+<div class="hidden">
+<aside class="fixed inset-y-0 left-0 w-64 border-r-8 border-[#4a3015] bg-[#835425] dark:bg-[#4a3015] text-white font-['Space_Grotesk'] font-bold uppercase flex flex-col h-full py-4 space-y-2 shadow-[8px_0_0_0_rgba(0,0,0,0.2)]">
+<div class="px-6 mb-8 text-xl font-black text-[#FFDCC1]">SOCIAL SAVER</div>
+<div class="flex flex-col flex-1 px-2 space-y-2">
+<a class="bg-[#006E22] text-white border-4 border-white mx-2 py-3 px-4 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">home</span> Home
+                </a>
+<a class="text-[#FFDCC1] hover:bg-[#a06a33] mx-2 py-3 px-4 flex items-center gap-3 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Storage
+                </a>
+<a class="text-[#FFDCC1] hover:bg-[#a06a33] mx-2 py-3 px-4 flex items-center gap-3 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">architecture</span> Blueprints
+                </a>
+<a class="text-[#FFDCC1] hover:bg-[#a06a33] mx-2 py-3 px-4 flex items-center gap-3 transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">storefront</span> Market
+                </a>
+</div>
+<div class="mt-auto px-4 pb-4">
+<button class="w-full bg-secondary-fixed text-secondary px-4 py-3 uppercase mb-4 active:scale-95 transition-transform">Open Chest</button>
+<div class="flex items-center gap-3 px-2 py-3 text-[#FFDCC1] cursor-pointer hover:bg-[#a06a33]">
+<span class="material-symbols-outlined">settings</span> Settings
                 </div>
-
-                <div class="row">
-                    {% if items %}
-                        {% for item in items %}
-                        <div class="col-xl-4 col-lg-6 col-md-12 mb-4">
-                            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-start mb-2">
-                                        <span class="badge bg-primary-subtle text-primary card-tag">{{ item.tag }}</span>
-                                        <small class="text-muted" style="font-size: 0.7rem;">{{ item.timestamp.strftime('%d %b') if item.timestamp }}</small>
-                                    </div>
-                                    <p class="card-text text-dark fw-medium" style="font-size: 0.95rem;">{{ item.summary }}</p>
-                                </div>
-                                <div class="card-footer bg-white border-0 pb-3 d-flex justify-content-between align-items-center">
-                                    
-                                    {% if "google.com/search" in item.url %}
-                                        <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-outline-primary fw-bold px-2 py-1" style="font-size: 0.75rem;">
-                                            🔍 Find Article
-                                        </a>
-                                    {% else %}
-                                        <a href="{{ item.url }}" target="_blank" class="btn btn-sm btn-link text-decoration-none fw-bold p-0">View Source →</a>
-                                    {% endif %}
-                                    
-                                    <form action="/delete/{{ item._id }}" method="post" onsubmit="return confirm('Delete this research save?');">
-                                        <button type="submit" class="delete-btn text-muted" title="Delete">
-                                            🗑️
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="col-12 text-center py-5">
-                            <p class="text-muted fs-5">No items found.</p>
-                            <p class="text-muted small">Send an image or link to your WhatsApp bot to get started!</p>
-                            <a href="/dashboard" class="btn btn-sm btn-primary mt-2">Clear Filters</a>
-                        </div>
-                    {% endif %}
-                </div>
-            </div> </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>
+</aside>
+</div>
+</body></html>

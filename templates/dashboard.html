@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Social Saver - Knowledge Vault</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#683d0f",
+              "surface-tint": "#006e22",
+              "on-primary-fixed": "#002105",
+              "inverse-primary": "#7cdb7f",
+              "on-surface": "#1b1c1c",
+              "inverse-on-surface": "#f2f0f0",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#f9ba82",
+              "on-surface-variant": "#3f4a3d",
+              "on-primary-fixed-variant": "#005317",
+              "surface-container": "#efeded",
+              "primary": "#006e22",
+              "error-container": "#ffdad6",
+              "background": "#faf9f9",
+              "outline-variant": "#becaba",
+              "surface-bright": "#faf9f9",
+              "surface-container-high": "#e9e8e7",
+              "tertiary-container": "#44bd6e",
+              "surface-container-highest": "#e3e2e2",
+              "on-tertiary-fixed": "#00210c",
+              "secondary-fixed": "#ffdcc1",
+              "on-secondary-container": "#7a4b1e",
+              "on-tertiary": "#ffffff",
+              "outline": "#6f7a6c",
+              "surface-variant": "#e3e2e2",
+              "primary-container": "#5dbb63",
+              "inverse-surface": "#303031",
+              "tertiary-fixed": "#83fba5",
+              "on-primary-container": "#004713",
+              "on-background": "#1b1c1c",
+              "on-secondary-fixed": "#2e1500",
+              "on-secondary": "#ffffff",
+              "tertiary": "#006d36",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#66dd8b",
+              "surface-container-low": "#f5f3f3",
+              "secondary-container": "#ffbf87",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#98f899",
+              "on-tertiary-container": "#004721",
+              "primary-fixed-dim": "#7cdb7f",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#005227",
+              "surface": "#faf9f9",
+              "secondary": "#835425",
+              "surface-dim": "#dbdad9"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Space Grotesk"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "0px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #1e1e1e;
+        }
+        .pixel-border-inward {
+            box-shadow: inset 4px 4px 0px rgba(255,255,255,0.1), inset -4px -4px 0px rgba(0,0,0,0.5);
+        }
+        .pixel-border-outward {
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.5), -4px -4px 0px rgba(255,255,255,0.1);
+        }
+        .enchantment-glow:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4), 0 0 40px rgba(168, 85, 247, 0.2);
+            transform: translateY(-4px);
+        }
+        .command-block-input {
+            caret-color: #5dbb63;
+            text-shadow: 0 0 5px rgba(93, 187, 99, 0.5);
+        }
+    </style>
+</head>
+<body class="text-on-surface bg-[#1e1e1e] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-stone-800 dark:bg-stone-900 border-b-4 border-stone-700 shadow-[0_4px_0_0_rgba(0,0,0,0.3)]">
+<div class="flex items-center gap-3">
+<span class="text-2xl font-black text-green-500 drop-shadow-[4px_4px_0px_rgba(131,84,37,1)] font-['Space_Grotesk'] uppercase tracking-wider font-bold">
+                🧠 Social Saver
+            </span>
+</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-white border-b-4 border-green-500 pb-1 font-['Space_Grotesk'] uppercase tracking-wider font-bold h-full flex items-center px-2 hover:bg-stone-700 hover:translate-y-0.5 transition-all" href="#">Dashboard</a>
+<a class="text-stone-400 hover:text-stone-200 font-['Space_Grotesk'] uppercase tracking-wider font-bold h-full flex items-center px-2 hover:bg-stone-700 hover:translate-y-0.5 transition-all" href="#">Categories</a>
+<a class="text-stone-400 hover:text-stone-200 font-['Space_Grotesk'] uppercase tracking-wider font-bold h-full flex items-center px-2 hover:bg-stone-700 hover:translate-y-0.5 transition-all" href="#">Logout</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-stone-700 border-4 border-stone-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-400">person</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-stone-800 dark:bg-stone-900 border-r-4 border-stone-900 flex flex-col p-4 gap-2 overflow-y-auto">
+<div class="mb-6 px-2">
+<h2 class="text-stone-200 font-['Space_Grotesk'] font-bold uppercase text-sm mb-1">Your Chests</h2>
+<p class="text-stone-500 font-bold uppercase text-[10px] tracking-widest">Inventory</p>
+</div>
+<nav class="flex flex-col gap-3">
+
+    <!-- All Saves Button -->
+    <a href="/dashboard/{{ phone }}"
+       class="flex items-center gap-3 p-3 
+       {% if not request.query_params.get('tag_filter') %}
+       bg-stone-700 text-green-400 border-2 border-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]
+       {% else %}
+       text-stone-400 border-2 border-transparent hover:bg-stone-700 hover:border-stone-600
+       {% endif %}
+       font-bold uppercase text-sm transition-all">
+
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span>All Saves</span>
+    </a>
+
+    <!-- Dynamic Tags -->
+    {% for tag in tags %}
+    <a href="/dashboard/{{ phone }}?tag_filter={{ tag }}"
+       class="flex items-center gap-3 p-3
+       {% if request.query_params.get('tag_filter') == tag %}
+       bg-stone-700 text-green-400 border-2 border-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]
+       {% else %}
+       text-stone-400 border-2 border-transparent hover:bg-stone-700 hover:border-stone-600
+       {% endif %}
+       font-bold uppercase text-sm transition-all">
+
+        <span class="material-symbols-outlined">inventory_2</span>
+        <span>{{ tag }}</span>
+    </a>
+    {% endfor %}
+
+</nav>
+<div class="mt-auto pt-4 border-t-4 border-stone-900">
+<button class="w-full bg-green-600 hover:bg-green-500 text-white font-bold uppercase p-4 shadow-[0_4px_0_0_#004713] active:translate-y-1 active:shadow-none transition-all">
+                New Save
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 px-8 pb-12 min-h-screen">
+<header class="mb-10">
+<h1 class="text-4xl font-black text-stone-100 uppercase tracking-tighter mb-2 flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl text-green-500" style="font-variation-settings: 'FILL' 1;">castle</span>
+                Your Knowledge Vault
+            </h1>
+<div class="h-1 w-32 bg-green-500"></div>
+</header>
+<!-- Search Section (Command Block Style) -->
+<section class="mb-12 bg-stone-900 p-6 border-4 border-stone-700 shadow-[8px_8px_0px_0px_#141414]">
+
+<form method="get" action="/dashboard/{{ phone }}" 
+      class="flex flex-col md:flex-row gap-4 w-full">
+
+    <!-- Search Input -->
+    <div class="flex-grow relative">
+        <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+            <span class="text-green-500 font-bold font-mono mr-2">&gt;</span>
+        </div>
+
+        <input name="search"
+               class="w-full bg-stone-950 border-4 border-stone-800 p-4 pl-10 text-stone-200 focus:outline-none focus:border-green-600 font-mono placeholder-stone-600"
+               placeholder="Search your vault..."
+               value="{{ request.query_params.get('search','') }}">
+    </div>
+
+    <!-- Search Button -->
+    <button type="submit"
+            class="bg-stone-700 hover:bg-stone-600 text-stone-200 px-6 py-4 font-bold uppercase border-b-4 border-stone-900 active:translate-y-1 active:border-b-0 transition-all">
+        Search
+    </button>
+
+    <!-- Surprise Me -->
+    <a href="/dashboard/{{ phone }}?random_pick=true"
+       class="bg-stone-700 hover:bg-stone-600 text-stone-200 px-6 py-4 font-bold uppercase border-b-4 border-stone-900 active:translate-y-1 active:border-b-0 transition-all flex items-center gap-2">
+        <span class="material-symbols-outlined text-sm">casino</span>
+        Surprise Me
+    </a>
+
+</form>
+
+</section>
+<!-- Saved Items Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+{% if items %}
+  {% for item in items %}
+  <article class="bg-stone-800 border-4 border-stone-700 flex flex-col h-full transition-all duration-300 enchantment-glow group">
+    
+    <div class="p-5 flex-grow">
+      
+      <div class="flex justify-between items-start mb-4">
+        <span class="bg-green-900 text-green-400 px-2 py-1 text-[10px] font-bold border-2 border-green-700 uppercase tracking-widest">
+          [{{ item.tag | upper }}]
+        </span>
+        <span class="text-stone-500 text-[10px] font-bold">
+          {{ item.timestamp.strftime('%b %d, %Y') if item.timestamp }}
+        </span>
+      </div>
+
+      <h3 class="text-xl font-bold text-stone-100 mb-3 group-hover:text-green-400 transition-colors">
+        {{ item.summary[:60] }}...
+      </h3>
+
+      <p class="text-stone-400 text-sm leading-relaxed mb-4">
+        {{ item.summary[:150] }}...
+      </p>
+
+    </div>
+
+    <div class="grid grid-cols-2 bg-stone-900 border-t-4 border-stone-700">
+
+      <a href="{{ item.url }}" target="_blank"
+         class="p-4 text-xs font-bold uppercase text-stone-400 hover:text-white hover:bg-stone-700 transition-colors border-r-4 border-stone-700 flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-sm">link</span>
+        View Source
+      </a>
+
+      <form action="/delete/{{ item._id }}" method="post"
+            class="p-0 m-0">
+        <button type="submit"
+                class="w-full p-4 text-xs font-bold uppercase text-stone-500 hover:text-red-500 hover:bg-stone-700 transition-colors flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-sm">delete</span>
+          Delete
+        </button>
+      </form>
+
+    </div>
+  </article>
+  {% endfor %}
+{% else %}
+  <div class="col-span-full text-center text-stone-400">
+    <h2 class="text-2xl font-bold mb-4">🪵 Your chest is empty!</h2>
+    <p>Send something to your WhatsApp bot to start building your vault.</p>
+  </div>
+{% endif %}
+
+</div>
+<!-- Pagination / Footer Grid Stats -->
+<footer class="mt-16 bg-stone-900 p-4 border-4 border-stone-700 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-stone-800 border-2 border-stone-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-stone-500">chevron_left</span>
+</div>
+<div class="flex gap-2">
+<div class="w-12 h-12 bg-green-600 border-4 border-green-500 text-white flex items-center justify-center font-bold">1</div>
+<div class="w-12 h-12 bg-stone-800 border-2 border-stone-700 text-stone-500 flex items-center justify-center font-bold">2</div>
+<div class="w-12 h-12 bg-stone-800 border-2 border-stone-700 text-stone-500 flex items-center justify-center font-bold">3</div>
+</div>
+<div class="w-12 h-12 bg-stone-800 border-2 border-stone-700 flex items-center justify-center hover:bg-stone-700 cursor-pointer">
+<span class="material-symbols-outlined text-stone-200">chevron_right</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold uppercase text-stone-500 block mb-1">XP Level: 24</span>
+<div class="w-48 h-2 bg-stone-950 border-2 border-stone-800 overflow-hidden">
+<div class="bg-green-500 h-full w-2/3 shadow-[0_0_10px_#5dbb63]"></div>
+</div>
+</div>
+</footer>
+</main>
+</body></html>
